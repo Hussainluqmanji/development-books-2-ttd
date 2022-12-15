@@ -5,11 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.tcs.developmentbooks2ttd.enums.BooksEnum;
+
 @Service
 public class BooksService {
 
-	public List<String> getAllBooks() {
-		return Arrays.asList("Clean Code", "The Clean Coder", "Clean Architecture",
-				"Test Driven Development by Example", "Working Effectively With Legacy Code");
+	public List<BooksEnum> getAllBooks() {
+		return Arrays.asList(BooksEnum.values());
 	}
 }
