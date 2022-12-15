@@ -75,4 +75,15 @@ public class BooksServiceTest {
         PriceSummary result = service.calculateBooksCostWithDiscount(books);
         assertEquals(135.0, result.getFinalPrice(), 0.0);
     }
+    
+    @Test
+    public void buyFourDiffBookAndGetDiscount() {
+        List<BooksInput> books = new ArrayList<BooksInput>();
+        books.add(new BooksInput(1, 1));
+        books.add(new BooksInput(2, 1));
+        books.add(new BooksInput(3, 1));
+        books.add(new BooksInput(4, 1));
+        PriceSummary result = service.calculateBooksCostWithDiscount(books);
+        assertEquals(160.0, result.getFinalPrice(), 0.0);
+    }
 }
