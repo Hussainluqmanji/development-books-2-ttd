@@ -52,7 +52,7 @@ public class BooksServiceTest {
     public void buyBookShouldReturnPrice() {
         List<BooksInput> books = new ArrayList<BooksInput>();
         books.add(new BooksInput(1, 1));
-        double result = service.buyBooks(books);
+        double result = service.calculateBooksCostWithDiscount(books);
         assertEquals(50.0, result, 0.0);
     }
     
@@ -61,7 +61,7 @@ public class BooksServiceTest {
         List<BooksInput> books = new ArrayList<BooksInput>();
         books.add(new BooksInput(1, 1));
         books.add(new BooksInput(2, 1));
-        double result = service.buyBooks(books);
+        double result = service.calculateBooksCostWithDiscount(books);
         assertEquals(95.0, result, 0.0);
     }
 }
