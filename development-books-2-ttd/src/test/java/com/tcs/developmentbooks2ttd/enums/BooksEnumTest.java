@@ -14,10 +14,10 @@ public class BooksEnumTest {
 	@Test
 	public void booksShouldHaveAllTheDetails() {
 		BooksEnum cleanCodeBook = BooksEnum.CLEAN_CODE;
-		assertEquals(BooksEnum.CLEAN_CODE.getId(), cleanCodeBook.getId());
-		assertEquals(BooksEnum.CLEAN_CODE.getAuthor(), cleanCodeBook.getAuthor());
-		assertEquals(BooksEnum.CLEAN_CODE.getTitle(), cleanCodeBook.getTitle());
-		assertEquals(BooksEnum.CLEAN_CODE.getYear(), cleanCodeBook.getYear());
-		assertEquals(BooksEnum.CLEAN_CODE.getPrice(), cleanCodeBook.getPrice(), 0.0);
+		assertEquals(EnumTest.CLEAN_CODE.getId(), cleanCodeBook.getId());
+		assertEquals(EnumTest.CLEAN_CODE.getAuthor(), cleanCodeBook.getAuthor());
+		assertEquals(EnumTest.CLEAN_CODE.getTitle(), cleanCodeBook.getTitle());
+		assertEquals(EnumTest.CLEAN_CODE.getYear(), cleanCodeBook.getYear());
+		assertEquals(EnumTest.CLEAN_CODE.getPrice(), cleanCodeBook.getPrice(), 0.0);
 	}
 }
