@@ -2,15 +2,18 @@ package com.tcs.developmentbooks2ttd.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
 import com.tcs.developmentbooks2ttd.enums.BooksEnum;
+import com.tcs.developmentbooks2ttd.model.Books;
 
 @Service
 public class BooksService {
 
-	public List<BooksEnum> getAllBooks() {
-		return Arrays.asList(BooksEnum.values());
+	public List<Books> getAllBooks() {
+		return Arrays.stream(BooksEnum.values()).map(bookEnum -> new Books(bookEnum.getId(), bookEnum.getTitle(),
+				bookEnum.getAuthor(), bookEnum.getYear(), bookEnum.getPrice())).collect(Collectors.toList());
 	}
 }
