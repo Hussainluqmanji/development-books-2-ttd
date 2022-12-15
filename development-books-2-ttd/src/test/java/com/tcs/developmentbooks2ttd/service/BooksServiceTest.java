@@ -12,6 +12,7 @@ import com.tcs.developmentbooks2ttd.enums.BooksEnum;
 import com.tcs.developmentbooks2ttd.enums.EnumTest;
 import com.tcs.developmentbooks2ttd.model.Books;
 import com.tcs.developmentbooks2ttd.model.BooksInput;
+import com.tcs.developmentbooks2ttd.model.PriceSummary;
 
 public class BooksServiceTest {
 
@@ -52,8 +53,8 @@ public class BooksServiceTest {
     public void buyBookShouldReturnPrice() {
         List<BooksInput> books = new ArrayList<BooksInput>();
         books.add(new BooksInput(1, 1));
-        double result = service.calculateBooksCostWithDiscount(books);
-        assertEquals(50.0, result, 0.0);
+        PriceSummary result = service.calculateBooksCostWithDiscount(books);
+        assertEquals(50.0, result.getFinalPrice(), 0.0);
     }
     
     @Test
@@ -61,7 +62,7 @@ public class BooksServiceTest {
         List<BooksInput> books = new ArrayList<BooksInput>();
         books.add(new BooksInput(1, 1));
         books.add(new BooksInput(2, 1));
-        double result = service.calculateBooksCostWithDiscount(books);
-        assertEquals(95.0, result, 0.0);
+        PriceSummary result = service.calculateBooksCostWithDiscount(books);
+        assertEquals(95.0, result.getFinalPrice(), 0.0);
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.tcs.developmentbooks2ttd.enums.BooksEnum;
 import com.tcs.developmentbooks2ttd.model.Books;
 import com.tcs.developmentbooks2ttd.model.BooksInput;
+import com.tcs.developmentbooks2ttd.model.PriceSummary;
 
 @Service
 public class BooksService {
@@ -20,14 +21,20 @@ public class BooksService {
 				bookEnum.getAuthor(), bookEnum.getYear(), bookEnum.getPrice())).collect(Collectors.toList());
 	}
 
-	public double calculateBooksCostWithDiscount(List<BooksInput> booksBought) {
+	public PriceSummary calculateBooksCostWithDiscount(List<BooksInput> booksBought) {
 		int totalBooks = booksBought.stream().mapToInt(book -> book.getQuantity()).sum();
 		double actualCost = totalBooks * SINGLE_BOOK_PRICE;
 		double discount = 0;
 		if (totalBooks == 2) {
 			discount = 5;
 		}
+
 		double finalPrice = actualCost - (actualCost * (discount / 100));
-		return finalPrice;
+		PriceSummary priceSummary = new PriceSummary();
+		priceSummary.setActualPrice(50 * totalBooks);
+		priceSummary.setFinalPrice(finalPrice);
+		priceSummary.setTotalBooks(totalBooks);
+		priceSummary.setTotalDiscount(priceSummary.getActualPrice() - priceSummary.getFinalPrice());
+		return priceSummary;
 	}
 }
