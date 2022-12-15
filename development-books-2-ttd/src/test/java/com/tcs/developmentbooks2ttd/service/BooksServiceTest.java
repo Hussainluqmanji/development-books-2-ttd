@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.tcs.developmentbooks2ttd.enums.BooksEnum;
@@ -13,16 +14,21 @@ import com.tcs.developmentbooks2ttd.model.BooksInput;
 
 public class BooksServiceTest {
 
+	BooksService service;
+
+	@BeforeEach
+	public void setUp() {
+		service = new BooksService();
+	}
+
 	@Test
 	public void booksShouldGetFiveDevelopmentBooks() {
-		BooksService service = new BooksService();
 		List<Books> books = service.getAllBooks();
 		assertEquals(5, books.size());
 	}
 
 	@Test
 	public void booksShouldBeEqualToAvailableDevelopmentBooks() {
-		BooksService service = new BooksService();
 		List<Books> books = service.getAllBooks();
 		assertEquals(EnumTest.CLEAN_CODE.getTitle(), books.get(0).getTitle());
 		assertEquals(EnumTest.THE_CLEAN_CODER.getTitle(), books.get(1).getTitle());
@@ -33,7 +39,6 @@ public class BooksServiceTest {
 
 	@Test
 	public void booksShouldHaveAllTheDetails() {
-		BooksService service = new BooksService();
 		List<Books> books = service.getAllBooks();
 		assertEquals(BooksEnum.CLEAN_CODE.getId(), books.get(0).getId());
 		assertEquals(BooksEnum.CLEAN_CODE.getAuthor(), books.get(0).getAuthor());
@@ -44,7 +49,6 @@ public class BooksServiceTest {
 	
     @Test
     public void buyBookShouldGetSuccessMessage() {
-        BooksService service = new BooksService();
         double result = service.buyBooks(new BooksInput(1, 1));
         assertEquals(50.0, result, 0.0);
     }
