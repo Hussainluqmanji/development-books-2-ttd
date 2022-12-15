@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import com.tcs.developmentbooks2ttd.enums.BooksEnum;
 import com.tcs.developmentbooks2ttd.enums.EnumTest;
 import com.tcs.developmentbooks2ttd.model.Books;
+import com.tcs.developmentbooks2ttd.model.BooksInput;
 
 public class BooksServiceTest {
 
@@ -40,4 +41,11 @@ public class BooksServiceTest {
 		assertEquals(BooksEnum.CLEAN_CODE.getYear(), books.get(0).getYear());
 		assertEquals(BooksEnum.CLEAN_CODE.getPrice(), books.get(0).getPrice(), 0.0);
 	}
+	
+    @Test
+    public void buyBookShouldGetSuccessMessage() {
+        BooksService service = new BooksService();
+        String result = service.buyBooks(new BooksInput(1, 1));
+        assertEquals("Book bought..", result);
+    }
 }
