@@ -2,6 +2,7 @@ package com.tcs.developmentbooks2ttd.service;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -48,8 +49,10 @@ public class BooksServiceTest {
 	}
 	
     @Test
-    public void buyBookShouldGetSuccessMessage() {
-        double result = service.buyBooks(new BooksInput(1, 1));
+    public void buyBookShouldReturnPrice() {
+        List<BooksInput> books = new ArrayList<BooksInput>();
+        books.add(new BooksInput(1, 1));
+        double result = service.buyBooks(books);
         assertEquals(50.0, result, 0.0);
     }
 }

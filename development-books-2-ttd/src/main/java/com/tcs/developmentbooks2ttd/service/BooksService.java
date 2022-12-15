@@ -13,13 +13,14 @@ import com.tcs.developmentbooks2ttd.model.BooksInput;
 @Service
 public class BooksService {
 
+	private static final double SINGLE_BOOK_PRICE = 50.0;;
+
 	public List<Books> getAllBooks() {
 		return Arrays.stream(BooksEnum.values()).map(bookEnum -> new Books(bookEnum.getId(), bookEnum.getTitle(),
 				bookEnum.getAuthor(), bookEnum.getYear(), bookEnum.getPrice())).collect(Collectors.toList());
 	}
 
-    public double buyBooks(BooksInput booksBought) {
-        List<Books> books = getAllBooks();
-        return books.stream().filter(book -> book.getId() == booksBought.getBookId()).findAny().get().getPrice();
-    }
+	public double buyBooks(List<BooksInput> booksBought) {
+		return booksBought.stream().mapToInt(book -> book.getQuantity()).sum() * SINGLE_BOOK_PRICE;
+	}
 }
